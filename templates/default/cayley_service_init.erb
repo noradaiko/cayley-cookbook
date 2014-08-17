@@ -21,7 +21,7 @@ CAYLEY_LOG_DIR="<%= node.cayley.log_dir %>"
 CAYLEY_USER="root"
 
 usage() {
-    echo "Usage: `basename $0`: <start|stop|status>"
+    echo "Usage: `basename $0`: <start|stop|restart|status>"
     exit 1
 }
 
@@ -58,6 +58,11 @@ status() {
     # return $PID
 }
 
+restart() {
+    stop
+    start
+}
+
 if [ "x$1" = "xstart" ]
 then
     start
@@ -81,6 +86,12 @@ then
         echo "Cayley server is NOT running"
     exit 1
     fi
+fi
+
+if [ "x$1" = "xrestart" ]
+then
+    restart
+    exit 0
 fi
 
 usage

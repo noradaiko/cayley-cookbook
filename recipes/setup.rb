@@ -70,7 +70,7 @@ end
 #
 
 service "cayley" do
-  supports :status => true, :start => true, :stop => true
+  supports :status => true, :start => true, :stop => true, :restart => true
 end
 
 template "/etc/init.d/cayley" do
